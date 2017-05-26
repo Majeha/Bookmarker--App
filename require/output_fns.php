@@ -15,7 +15,7 @@
 
 		<!-- Website Font style -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/style.css">
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -23,7 +23,7 @@
 </head>
 <body>
  
-  <h1>bookmarker</h1> 
+  <h1>Bookmarker</h1> 
   <hr />
 <?php
 		if ($title) {
@@ -64,13 +64,13 @@
   <ul>
     <li>Store your bookmarks online with us!</li>
 	<li>See what other users use!</li>
-	<li>Share your favourite links with others!</li>
+	<li>Get recommendations!</li>
   </ul>
 <?php
 	}
 	function display_login_form()
 	{
-?><tr><td colspan="2">Members log in here:</td></tr>
+?>
   <div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
@@ -172,6 +172,7 @@
 <?php
 	$color = "#cccccc";
 	echo "<tr bgcolor=\"$color\">"
+			
 	   . "<td><strong>Bookmark</strong></td>"
 	   . "<td><strong>Delete?</strong></td></tr>";
 	   if ( is_array($url_array) && count($url_array) > 0 ) {
@@ -217,6 +218,7 @@
   <a href="change_passwd_form.php">Change password</a>
   <br />
   <a href="recommend.php">Recommend URLs to me</a>&nbsp;|&nbsp;
+    <a href="top.php">Top URL</a>&nbsp;|&nbsp;
   <a href="logout.php">Logout</a>
   <hr />
 <?php

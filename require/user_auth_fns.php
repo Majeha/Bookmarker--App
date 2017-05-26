@@ -69,16 +69,15 @@
 			return true;
 		}
 	}
-	function get_random_str($min_len, $max_len)
+	function get_random_str($length = 10)
 	{
-		// get a random chars length between min_len and max_len
-		// return it or false on failed;
+		// get a random string to be send to user as passwd
 		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 			. '0123456789-_';
-		$chars_len = strlen($chars);
-		$str_len = rand($min_len, $max_len);
-		for ($i=0; $i<$str_len; $i++) {
-			$str .= $chars{rand(0, $chars_len-1)};
+		$charsLength = strlen($chars);
+		$str = '';
+		for ($i=0; $i<$length; $i++) {
+			$str .= $chars{rand(0, $charsLength - 1)};
 		}
 		return $str;
 	}

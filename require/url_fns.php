@@ -84,4 +84,25 @@
 		}
 		return $url;
 	}
+	function top_urls($username, $popularity = 1)
+	{
+	$conn = db_connect();
+	$sql = "select bm_url, count(*) cnt
+			from tblBookmark
+			group by bm_url 
+			having count(bm_url)>'$popularity'
+			order by count(*) DESC";
+				$result = $conn->query($sql);
+				$err_msg = 'Could not find top bookmarks.';
+		if (!$result || $result->num_rows == 0)
+			throw new Exception($err_msg);
+		$urls = array();
+		$count = 0;
+		while($row = $result->fetch_object()) {
+			$url[$count++] = $row->{'bm_url'};
+		}
+		return $url;
+	}
+
+
 ?>
