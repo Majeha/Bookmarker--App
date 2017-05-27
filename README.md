@@ -5,7 +5,7 @@ It was made by me, but with some help of a tutorial from a book called PHP and M
 The projects emphasis was on the user authentication and personalization. The project contains the basic for creating a bigger app, so more content and functions would be easier to add in the future.  
 I added a whole new function which sorts the most popular bookmarks and prints the result in a decending order.
 I also added better deleting tool for the bookmarks , and made the login function and directing function work better (they weren't really working in the tutorial, or I implemented them incorrectly).
-It may not look like much, because I hadn't had the time to make it look awesome, but there is minor implementation of bootstrap, but the GUI is subject to change.
+It may not look like much, because I hadn't had the time to make it look awesome, but there is minor implementation of bootstrap, but the GUI is subject to change, but the point of this project was not in the visuals, so it doesn't matter that much.
 The app contains basic CRUD (Create, Read, Update and Delete) operations. Update function is currently only available for the changing password.
 The structure is bit of overkill, and it might be hard to understand why the code is scattered in diffrent directories, but it was made like it was in the tutorial on the idea that if the site grows bigger you could use the same elements again just by calling them.
 Require folder contains all the core elements of the site like the functions, and the elements of the pages. Webroot contains the root directories and in the files you just call the functions from the require files. Global init contains all the functions from the require folder.
