@@ -3,7 +3,7 @@
 	function get_user_urls($username)
 	{
 		$conn = db_connect();
-		$sql = "select bm_url from tblBookmark where username='$username'";
+		$sql = "select bm_url from tblBookmark where username='$username'" ;
 		$result = $conn->query($sql);
 		if (!$result)
 			return false;
@@ -42,6 +42,21 @@
 			throw new Exception('Bookmark could not been added.');
 		return true;
 	}
+		/*function bm_update($username, $old_url, $new_url)
+	{ exist_bm($username, $old_url);
+		// Update new_url for user, 
+		// ensure new_url is valid and has no malicious code
+		echo "Attempting to update " . htmlspecialchars($new_url) . "<br />";
+		
+		$username = $_SESSION['valid_user'];
+		$conn = db_connect();
+		$result = $conn->query("update tblBookmark set bm_url = ('".$new_url."') where username = '".$username."'");
+		if (!$result) {
+			throw new Exception('Url could not be changed, Please try later.');
+		} else {
+			return true;
+		}
+	} */
 	function bm_delete($username, $url)
 	{
 		if (!exist_bm($username, $url)) 

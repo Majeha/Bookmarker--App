@@ -19,7 +19,10 @@
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
+ 		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
  
@@ -34,10 +37,7 @@
 	function do_html_footer()
 	{
 ?>
-  		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+ 
 </body>
 </html>
 <?php
@@ -171,10 +171,9 @@
   <table width="300" cellpadding="2" cellspacing="0">
 <?php
 	$color = "#cccccc";
-	echo "<tr bgcolor=\"$color\">"
+	echo "<tr bgcolor=\"$color\">
 			
-	   . "<td><strong>Bookmark</strong></td>"
-	   . "<td><strong>Delete?</strong></td></tr>";
+	    <td><strong>Bookmarks</strong></td>";
 	   if ( is_array($url_array) && count($url_array) > 0 ) {
 	       foreach ($url_array as $url) {
 		       if ($color == "#cccccc") {
@@ -182,10 +181,47 @@
 			   } else {
 			       $color = "#cccccc";
 			   }
-		       echo "<tr bgcolor=\"$color\">"
-                 . "<td><a href=\"$url\">" . htmlspecialchars($url) . "</a></td>"
-			     . "<td><input type=\"checkbox\" name=\"del_me[]\" "
-			     . "value=\"$url\"/></td></tr>";
+		       echo "<tr bgcolor=\"$color\">
+                 <td><a href=\"$url\">" . htmlspecialchars($url) . "</a></td></tr>";
+		   }
+		   // remember to call htmlspecialchars() when we are displaying
+		   // user data
+	   } else {
+           echo "<tr><td>No bookmarks on record.</td></tr>";
+	   }
+?>
+  </table>
+  </form>
+<?php
+	}
+	function display_delete_urls($url_array)
+	{
+		//set global variable, so we can test later if this is on page
+		global $bm_table;
+		$bm_table = true;
+?>
+  <br />
+  <form name="bm_table" method="post" action="delete_bms.php">
+  <table width="300" cellpadding="2" cellspacing="0">
+<?php
+	$color = "#cccccc";
+	echo "<tr bgcolor=\"$color\">
+			
+	    <td><strong>Bookmark</strong></td>
+	    <td><strong>Check</strong></td>
+	   <td><strong>Delete</strong></td></tr>";
+	   if ( is_array($url_array) && count($url_array) > 0 ) {
+	       foreach ($url_array as $url) {
+		       if ($color == "#cccccc") {
+                   $color = "#ffffff";
+			   } else {
+			       $color = "#cccccc";
+			   }
+		       echo "<tr bgcolor=\"$color\">
+                 <td><a href=\"$url\">" . htmlspecialchars($url) . "</a></td>
+			     . <td><input type=\"checkbox\" name=\"del_me[]\"
+			     . value=\"$url\"/></td>
+			     <td><input type=\"submit\" type=\"button\" value=\"delete\"</td></tr>";
 		   }
 		   // remember to call htmlspecialchars() when we are displaying
 		   // user data
@@ -204,17 +240,7 @@
   <hr />
   <a href="member.php">Home</a>&nbsp;|&nbsp;
   <a href="add_bm_form.php">Add Bookmark</a>&nbsp;|&nbsp;
-<?php
-	// some times there is no bookmarks
-	// only offer delete option if bookmark table on this page
-	global $bm_table;
-	if ($bm_table == true) {
-		echo "<a href=\"#\" onclick=\"bm_table.submit();\">"
-			. "Delete Bookmark</a>&nbsp;|&nbsp;";
-	} else {
-		echo "<span style=\"color: #cccccc\">Delete BM</span>&nbsp;|&nbsp;";
-	}
-?>
+   <a href="delete_form.php">Delete</a>&nbsp;|&nbsp;
   <a href="change_passwd_form.php">Change password</a>
   <br />
   <a href="recommend.php">Recommend URLs to me</a>&nbsp;|&nbsp;
