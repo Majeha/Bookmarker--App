@@ -7,7 +7,7 @@ if (isset($_POST['username']) && isset($_POST['passwd'])) {
 	try {
 			login($username, $passwd);
 			$_SESSION['valid_user'] = $username;
-			do_html_url('member.php', 'Go to members area');
+			do_html_url('member.php', '<h2>Go to members area</h2');
 			} 
 			catch (Exception $e){
 			do_html_header('Problem:');

@@ -1,7 +1,7 @@
 <?php
 	require_once('../require/global_init.php');
 	session_start();
-	do_html_header('Change password');
+	do_html_header("");
 		check_valid_user();
 		display_password_form();
 	display_user_menu();

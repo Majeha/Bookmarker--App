@@ -6,16 +6,16 @@
 <html>
 <head>
 <head>
- <title><?php echo $title ?></title>
+<?php echo $title ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<link rel="stylesheet" href="css/style.css">
 
 		<!-- Website CSS style -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Website Font style -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/style.css">
+
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -167,7 +167,7 @@
 		$bm_table = true;
 ?>
   <br />
-  <form name="bm_table" method="post" action="delete_bms.php">
+  <form name="bm_table" method="post" action="">
   <table width="300" cellpadding="2" cellspacing="0">
 <?php
 	$color = "#cccccc";
@@ -184,8 +184,6 @@
 		       echo "<tr bgcolor=\"$color\">
                  <td><a href=\"$url\">" . htmlspecialchars($url) . "</a></td></tr>";
 		   }
-		   // remember to call htmlspecialchars() when we are displaying
-		   // user data
 	   } else {
            echo "<tr><td>No bookmarks on record.</td></tr>";
 	   }
@@ -195,7 +193,7 @@
 <?php
 	}
 	function display_delete_urls($url_array)
-	{
+	{ //Display delete form for bookmarks
 		//set global variable, so we can test later if this is on page
 		global $bm_table;
 		$bm_table = true;
@@ -223,8 +221,6 @@
 			     . value=\"$url\"/></td>
 			     <td><input type=\"submit\" type=\"button\" value=\"delete\"</td></tr>";
 		   }
-		   // remember to call htmlspecialchars() when we are displaying
-		   // user data
 	   } else {
            echo "<tr><td>No bookmarks on record.</td></tr>";
 	   }
@@ -249,7 +245,7 @@
   <hr />
 <?php
 	}
-	// display the form form people to add a new bookmark
+	// display the form people to add a new bookmark
 	function display_add_bm_form() 
 	{
 ?>
@@ -343,6 +339,33 @@
 		}
 	} else {
 		echo "<tr><td>No recommendations for you today.</td></tr>";
+	}
+?>
+  </table>
+<?php
+	}
+		function display_top_urls($url_array)
+	{
+?>
+  <br />
+  <table width="300" cellpadding="2" cellspacing="0">
+<?php
+	$color = "#cccccc";
+	echo "<tr bgcolor=\"$color\">"
+	   . "<td><strong>Top Urls</strong></td></tr>";
+	if ( is_array($url_array) && count($url_array) > 0 ){
+		foreach ($url_array as $url) {
+			if ($color == "#cccccc") {
+				$color = "#ffffff";
+			} else {
+				$color = "#cccccc";
+			}
+			echo "<tr bgcolor=\"$color\">"
+			   . "<td><a href=\"$url\">" . htmlspecialchars($url) 
+			   . "</a></td></tr>";
+		}
+	} else {
+		echo "<tr><td>No Top chart available.</td></tr>";
 	}
 ?>
   </table>

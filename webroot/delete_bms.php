@@ -3,7 +3,7 @@
 	session_start();
 	$del_me = $_POST['del_me'];
 	$valid_user = $_SESSION['valid_user'];
-	do_html_header('Delete bookmarks');
+	do_html_header("");
 	check_valid_user();
 	if (!isset($del_me) || count($del_me) <= 0) {
 		$err_msg = '<p>You have not choose any bookmarks to delete.<br />'

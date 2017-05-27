@@ -37,9 +37,9 @@ try {
 $_SESSION['valid_user'] = $username;
 
 //provide a link to login page
-do_html_header('Registration successful');
+do_html_header("");
 echo 'Your registeration was successful. Login to start using our baddass bookmarker!';
-do_html_url('login.php', 'Go to login page');
+do_html_url('login.php', '<h2>Go to login page</h2>');
 
 //end page
 do_html_footer();

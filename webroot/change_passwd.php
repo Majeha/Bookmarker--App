@@ -1,7 +1,7 @@
 <?php
 	require('../require/global_init.php');
 	session_start();
-	do_html_header('Change password');
+	do_html_header("");
 	$old_passwd = $_POST['old_passwd'];
 	$new_passwd = $_POST['new_passwd'];
 	$new_passwd2 = $_POST['new_passwd2'];

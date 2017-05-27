@@ -1,7 +1,7 @@
 <?php
 	require_once('../require/global_init.php');
 	session_start();
-	do_html_header('Recommending URLs');
+	do_html_header("");
 	
 	try {
 		check_valid_user();

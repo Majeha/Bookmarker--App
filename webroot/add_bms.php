@@ -2,7 +2,7 @@
 	require_once('../require/global_init.php');
 	session_start();
 	$new_url = $_POST['new_url'];
-	do_html_header('Adding bookmarks');
+	do_html_header("");
 	
 	try{
 		check_valid_user();

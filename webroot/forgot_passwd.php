@@ -1,6 +1,6 @@
 <?php
 	require_once('../require/global_init.php');
-	do_html_header('Resetting password');
+	do_html_header("");
 	$username = $_POST['username'];
 	
 	try {
